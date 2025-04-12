@@ -1,11 +1,13 @@
-import React, {useCallback, useMemo, useRef} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import React, {useCallback, useRef} from 'react';
+import {Text, StyleSheet, Button} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
+import { FormFate } from './lib';
+import { loanform } from './test3';
 
 const App = () => {
   // ref
@@ -22,7 +24,7 @@ const App = () => {
   // renders
   return (
     <GestureHandlerRootView style={styles.container}>
-      <BottomSheetModalProvider>
+      {/* <BottomSheetModalProvider>
         <Button
           onPress={handlePresentModalPress}
           title="Present Modal"
@@ -37,7 +39,9 @@ const App = () => {
             <Text>I'm working correctly 😊</Text>
           </BottomSheetView>
         </BottomSheetModal>
-      </BottomSheetModalProvider>
+      </BottomSheetModalProvider> */}
+
+      <FormFate formDefinition={loanform} />
     </GestureHandlerRootView>
   );
 };
