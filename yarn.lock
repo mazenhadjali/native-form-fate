@@ -2198,6 +2198,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-picker/picker@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "@react-native-picker/picker@npm:2.11.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 889107a9c6d6b23404332ec60d7526a6244ff6433be1e06892014849c97dce8a52c1d7c670aa89761ad814da923c7585b2934bf50f8c8431fdb50f28d4a55fe3
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.77.1":
   version: 0.77.1
   resolution: "@react-native/assets-registry@npm:0.77.1"
@@ -5133,39 +5143,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formgenerator@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "formgenerator@workspace:."
-  dependencies:
-    "@babel/core": ^7.25.2
-    "@babel/preset-env": ^7.25.3
-    "@babel/runtime": ^7.25.0
-    "@gorhom/bottom-sheet": ^5.1.2
-    "@react-native-community/cli": 15.0.1
-    "@react-native-community/cli-platform-android": 15.0.1
-    "@react-native-community/cli-platform-ios": 15.0.1
-    "@react-native/babel-preset": 0.77.1
-    "@react-native/eslint-config": 0.77.1
-    "@react-native/metro-config": 0.77.1
-    "@react-native/typescript-config": 0.77.1
-    "@types/jest": ^29.5.13
-    "@types/react": ^18.2.6
-    "@types/react-test-renderer": ^18.0.0
-    eslint: ^8.19.0
-    formfatecore: ^0.10.0
-    jest: ^29.6.3
-    prettier: 2.8.8
-    react: 18.3.1
-    react-hook-form: ^7.55.0
-    react-native: 0.77.1
-    react-native-gesture-handler: ^2.22.0
-    react-native-reanimated: ^3.16.7
-    react-native-svg-transformer: ^1.5.0
-    react-test-renderer: 18.3.1
-    typescript: 5.0.4
-  languageName: unknown
-  linkType: soft
-
 "fresh@npm:0.5.2":
   version: 0.5.2
   resolution: "fresh@npm:0.5.2"
@@ -7427,6 +7404,40 @@ __metadata:
   checksum: 3be20d8866a57a6b6d218e82549711c8352ed969f9ab3c45379da28f405363ad4c9aeb0b39e9abc101a529ca65a72ff9502b00bf74a912c4b64a9d62dfd26c29
   languageName: node
   linkType: hard
+
+"native-form-fate@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "native-form-fate@workspace:."
+  dependencies:
+    "@babel/core": ^7.25.2
+    "@babel/preset-env": ^7.25.3
+    "@babel/runtime": ^7.25.0
+    "@gorhom/bottom-sheet": ^5.1.2
+    "@react-native-community/cli": 15.0.1
+    "@react-native-community/cli-platform-android": 15.0.1
+    "@react-native-community/cli-platform-ios": 15.0.1
+    "@react-native-picker/picker": ^2.11.0
+    "@react-native/babel-preset": 0.77.1
+    "@react-native/eslint-config": 0.77.1
+    "@react-native/metro-config": 0.77.1
+    "@react-native/typescript-config": 0.77.1
+    "@types/jest": ^29.5.13
+    "@types/react": ^18.2.6
+    "@types/react-test-renderer": ^18.0.0
+    eslint: ^8.19.0
+    formfatecore: ^0.10.0
+    jest: ^29.6.3
+    prettier: 2.8.8
+    react: 18.3.1
+    react-hook-form: ^7.55.0
+    react-native: 0.77.1
+    react-native-gesture-handler: ^2.22.0
+    react-native-reanimated: ^3.16.7
+    react-native-svg-transformer: ^1.5.0
+    react-test-renderer: 18.3.1
+    typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
 
 "natural-compare@npm:^1.4.0":
   version: 1.4.0

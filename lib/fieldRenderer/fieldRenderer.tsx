@@ -5,6 +5,7 @@ import { CustomComponents } from '../interfaces';
 import { FormField } from './formField';
 import { FormItem } from './formItem';
 import Input from '../elements/input';
+import { Select } from '../elements';
 
 export interface FieldRendererProps {
     name: string;
@@ -36,10 +37,9 @@ const getComponents = (components?: CustomComponents) => {
         time: Input,
         url: Input,
         ...components,
-        // select: components?.select || Select,
+        select: components?.select || Select,
         // selectOption: components?.selectOption || SelectOption,
         radio: components?.radio || RadioGroup,
-        // radioItem: components?.radioItem || RadioItem,
     };
     // console.log("Component Map:", componentMap);
     return componentMap;
@@ -82,17 +82,15 @@ const renderComponent = (
                     value={field.value as string}
                     ref={field.ref}
                 />);
-        // case 'radio':
-        //     return (
-        //         <Component
-        //             value={field.value as string}
-        //             ref={field.ref}
-        //         >
-        //             {fieldConfig.options?.map((option) => (
-        //                 <RadioItem key={option.value} field={field} option={option} />
-        //             ))}
-        //         </Component>
-        //     );
+        case 'radio':
+            return (
+                <Component
+                    value={field.value as string}
+                    field={field}
+                    fieldConfig={fieldConfig}
+                    ref={field.ref}
+                />
+            );
     }
 
     return componentMap[fieldConfig.type] ? (<Component field={field} fieldConfig={fieldConfig} ref={field.ref} />) : null;

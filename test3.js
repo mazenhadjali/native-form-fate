@@ -17,6 +17,27 @@ export const loanform = {
                     validator: (value) =>
                         value >= 18 ? true : 'Must be at least 18 years old',
                 },
+                gender: {
+                    type: 'radio',
+                    title: 'Gender',
+                    options: [
+                        {label:'Male' , value:'male'},
+                        { label: 'Female', value: 'female' },
+                    ],
+                    required: true,
+                },
+                socialtype: {
+                    type: 'select',
+                    title: 'Country of Citizenship',
+                    options: [
+                        { label: 'Canada', value: 'canada' },
+                        { label: 'Tunisia', value: 'Tunisia' },
+                        { label: 'Germany', value: 'germany' },
+                        { label: 'France', value: 'france' },
+                    ],
+                    required: true,
+                },
+
             },
         },
     },

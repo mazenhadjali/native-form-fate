@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-import React, { forwardRef, HTMLAttributes } from "react";
-import { useFormField } from "./formField";
+import React, { forwardRef, HTMLAttributes } from 'react';
+import { useFormField } from './formField';
 
 export interface FormControlProps extends HTMLAttributes<HTMLDivElement> { }
 
@@ -20,6 +19,6 @@ const FormControl = forwardRef<HTMLDivElement, FormControlProps>(
     }
 );
 
-FormControl.displayName = "FormControl";
+FormControl.displayName = 'FormControl';
 
 export { FormControl };

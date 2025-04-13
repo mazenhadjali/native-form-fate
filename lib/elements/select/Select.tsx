@@ -1,94 +1,101 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-import { useFormField } from "@/lib/fieldRenderer/formField";
-import React, { forwardRef, SelectHTMLAttributes } from "react";
+import React, { forwardRef } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { ControllerRenderProps } from 'react-hook-form';
+import { Picker } from '@react-native-picker/picker';
+import { useFormField } from '../../fieldRenderer/formField';
 
-export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps {
   fieldConfig?: {
     title?: string;
     description?: string;
     options?: { value: string; label: string }[];
     [key: string]: unknown;
   };
-  field?: React.Ref<HTMLInputElement> | any; // usually you get this from RHF's `Controller`
+  field?: ControllerRenderProps<Record<string, any>>;
 }
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className, style, field, fieldConfig }, ref) => {
+export const Select = forwardRef<any, SelectProps>(
+  ({ field, fieldConfig }, ref) => {
     const { error } = useFormField();
 
     return (
-      <div style={{ marginBottom: "1rem", width: "100%" }}>
+      <View style={styles.container}>
         {fieldConfig?.title && (
-          <label
-            htmlFor={field?.name}
-            style={{
-              display: "block",
-              marginBottom: "0.4rem",
-              fontWeight: 500,
-              fontSize: "14px",
-              color: "#333",
-            }}
-          >
-            {fieldConfig.title}
-          </label>
+          <Text style={styles.label}>{fieldConfig.title}</Text>
         )}
 
-        <select
-          ref={ref}
-          {...field}
-          style={{
-            width: "100%",
-            padding: "0.5rem 0.75rem",
-            border: `1px solid ${error ? "#e74c3c" : "#ccc"}`,
-            borderRadius: "8px",
-            fontSize: "15px",
-            outline: "none",
-            backgroundColor: "white",
-            cursor: "pointer",
-            boxShadow: error ? "0 0 0 2px rgba(231, 76, 60, 0.3)" : "none",
-            transition: "border-color 0.2s, box-shadow 0.2s",
-            ...style,
-          }}
-          className={className}
+        <View
+          style={[
+            styles.pickerContainer,
+            error ? styles.errorBorder : styles.defaultBorder,
+          ]}
         >
-          <option value="" disabled>
-            -- Select an option --
-          </option>
-          {fieldConfig?.options?.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+          <Picker
+            ref={ref}
+            selectedValue={field?.value}
+            onValueChange={(itemValue) => field?.onChange(itemValue)}
+            style={styles.picker}
+          >
+            <Picker.Item label="-- Select an option --" value="" enabled={false} />
+            {fieldConfig?.options?.map((option) => (
+              <Picker.Item
+                key={option.value}
+                label={option.label}
+                value={option.value}
+              />
+            ))}
+          </Picker>
+        </View>
 
         {fieldConfig?.description && !error && (
-          <span
-            style={{
-              display: "block",
-              marginTop: "0.3rem",
-              fontSize: "13px",
-              color: "#666",
-            }}
-          >
-            {fieldConfig.description}
-          </span>
+          <Text style={styles.description}>{fieldConfig.description}</Text>
         )}
 
         {error?.message && (
-          <span
-            style={{
-              display: "block",
-              marginTop: "0.3rem",
-              color: "#e74c3c",
-              fontSize: "13px",
-            }}
-          >
-            {error.message}
-          </span>
+          <Text style={styles.errorText}>{error.message}</Text>
         )}
-      </div>
+      </View>
     );
   }
 );
+
+const styles = StyleSheet.create({
+  container: {
+    marginBottom: 16,
+    width: '100%',
+  },
+  label: {
+    marginBottom: 6,
+    fontWeight: '500',
+    fontSize: 14,
+    color: '#333',
+  },
+  pickerContainer: {
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+  picker: {
+    height: 50,
+    width: '100%',
+  },
+  description: {
+    marginTop: 4,
+    fontSize: 13,
+    color: '#666',
+  },
+  errorText: {
+    marginTop: 4,
+    color: '#e74c3c',
+    fontSize: 13,
+  },
+  errorBorder: {
+    borderWidth: 1,
+    borderColor: '#e74c3c',
+  },
+  defaultBorder: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+});
 
 export default Select;
