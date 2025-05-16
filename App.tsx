@@ -1,5 +1,5 @@
 import React, {useCallback, useRef} from 'react';
-import {Text, StyleSheet, Button} from 'react-native';
+import { StyleSheet} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {
   BottomSheetModal,
